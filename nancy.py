@@ -7,7 +7,8 @@ import textwrap
 import time
 import os
 
-key = input("Enter your OpenAI key")
+openai.api_key = input("Enter your OpenAI key: ")
+
 
 year = input("Enter year: ")
 last_name = input("Enter Representative last name: ")
