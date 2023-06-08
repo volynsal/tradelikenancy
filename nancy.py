@@ -9,7 +9,7 @@ import os
 
 openai.api_key = input("Enter your OpenAI key: ")
 
-
+# Drill down
 year = input("Enter year: ")
 last_name = input("Enter Representative last name: ")
 
@@ -42,9 +42,9 @@ if len(date) > 1:
     print("We found multiple dates for this representative: ")
     for i,value in enumerate(dates):
         print(str(i+1) + ". " + value)
-        date = dates[i-1]
-        doc_id = doc_ids[i-1]
     index = input("Please enter the number in front of the date indicating which date you prefer: ")
+    date = dates[int(index)-1]
+    doc_id = doc_ids[int(index)-1]
     print("Generating the financial transactions for you now.")
 elif len(date) == 1:
     print("We only found one date for this Representative: " + date + ". Generating the financial transactions for you now.")
@@ -82,7 +82,7 @@ chunks = textwrap.wrap(pdf_content, 2048)
 for chunk in chunks:
     
 # The provided text
-    prompt = "These are this House of Representative's transactions for the year. There is a table with the transactions. Please return the Asset, Description, Date, and Amount for each transaction in a table with those columns. Limit your output to this information only!\n"
+    prompt = "These are this House of Representative's transactions for the year. There is a table with the transactions. Please return the Asset, Description, Transaction Type, Date, and Amount for each transaction in a table with those columns. Return a separate row for each transaction. Limit your output to this information only!\n"
 
     # Define the message to send to the ChatGPT API
     message = prompt + chunk
@@ -123,7 +123,7 @@ print("Deleting locally generated files")
 import os
 
 # List of files to keep
-files_to_keep = ['nancy.py', 'README.md', 'requirements.txt', '.git']
+files_to_keep = ['nancy.py', 'README.md', 'requirements.txt', '.git', 'overview.py']
 
 # Get the current directory
 current_dir = os.getcwd()
@@ -143,3 +143,4 @@ for file_name in files_in_directory:
         print(f"Deleted {file_path}")
 
 print("Files deletion completed.")
+
