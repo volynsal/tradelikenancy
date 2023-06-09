@@ -1,8 +1,6 @@
 import csv
 import zipfile
 import requests
-import openai
-import PyPDF2
 import textwrap
 import time
 import os
@@ -51,7 +49,8 @@ os.remove(xml_file_path)
 doc_id_urls = doc_ids
 del doc_ids
 
-company_names_counter = {}
+counter_sales = {}
+counter_purchases = {}
 
 for doc_id_url in doc_id_urls:
     doc_id = doc_id_url[-12:-5]
@@ -63,7 +62,33 @@ for doc_id_url in doc_id_urls:
         pdf_stream = io.BytesIO(pdf_data)
         doc = fitz.open("pdf", pdf_stream)
 
-        company_names, transaction_types = parsing(doc)
+        _, company_names, transaction_types, _, _, _ = parsing(doc)
+        
+        for index, company_name in enumerate(company_names):
+            company_names[index] = company_names[index].strip()
+
+        print('-------------------------------')
+        print(doc_id_url)
         print(company_names, transaction_types)
+
+        # for index, company_name in enumerate(company_names):
+        #     print(len(company_names), len(transaction_types))
+        #     if (transaction_types[index] == 'E' or transaction_types[index] == 'G'):
+        #         continue
+        #     elif (transaction_types[index] == 'S' or transaction_types[index] == 'S (partial)'):
+        #         if (company_name in counter_sales):
+        #             counter_sales[company_name] += 1
+        #         else:
+        #             counter_sales[company_name] = 1
+        #     elif (transaction_types[index] == 'P' or transaction_types[index] == 'P (partial)'):
+        #         if (company_name in counter_purchases):
+        #             counter_purchases[company_name] += 1
+        #         else:
+        #             counter_purchases[company_name] = 1
+
+
+
+        # top_five_keys_sales = sorted(counter_sales, key=counter_sales.get, reverse=True)[:5]
+        # top_five_key_purchases = sorted(counter_purchases, key=counter_purchases.get, reverse=True)[:5]
 
         
