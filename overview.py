@@ -2,10 +2,7 @@ import csv
 import zipfile
 import requests
 import textwrap
-import time
 import os
-import ast
-import re
 
 import fitz  # PyMuPDF
 import io

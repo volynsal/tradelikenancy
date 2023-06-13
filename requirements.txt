@@ -1,5 +1,5 @@
-PyPDF2
-openai
-requests
-textwrap3
-
+fitz==0.0.1.dev2
+openai==0.27.7
+PyMuPDF==1.22.3
+PyPDF2==3.0.1
+Requests==2.31.0
