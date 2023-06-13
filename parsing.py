@@ -1,7 +1,3 @@
-import fitz  # PyMuPDF
-import io
-import requests
-
 def parsing(doc):
     owner = []
     company_name = []

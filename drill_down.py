@@ -123,7 +123,7 @@ print("Deleting locally generated files")
 import os
 
 # List of files to keep
-files_to_keep = ['nancy.py', 'README.md', 'requirements.txt', '.git', 'overview.py']
+files_to_keep = ['drill_down.py', 'README.md', 'requirements.txt', '.git', 'overview.py', 'parsing.py']
 
 # Get the current directory
 current_dir = os.getcwd()
