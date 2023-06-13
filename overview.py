@@ -1,7 +1,6 @@
 import csv
 import zipfile
 import requests
-import textwrap
 import os
 
 import fitz  # PyMuPDF
