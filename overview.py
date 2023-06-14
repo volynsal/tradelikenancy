@@ -62,10 +62,6 @@ for doc_id_url in doc_id_urls:
         doc = fitz.open("pdf", pdf_stream)
 
         _, company_names, transaction_types, _, _, _ = parsing(doc)
-        
-        for index, company_name in enumerate(company_names):
-            counter += 1
-            company_names[index] = company_names[index].strip()
 
         for index, company_name in enumerate(company_names):
             if (transaction_types[index] == 'E' or transaction_types[index] == 'G'):
