@@ -9,3 +9,12 @@ The second python script is overview.py. You can input a given year, wait 5 minu
 parsing.py is a custom PDF parser I built to process highly unstructured text coming from the filing transactions. It works for both drill_down.py and overview.py. Building this processor was a technical challenge and I love discussing it. 
 
 Feel reach out to me if you have any questions!
+
+## Setup
+
+1. Create a virtual environment: python -m venv venv
+2. Install requirements: pip install -r requirements.txt
+3. Run overview.py or drill_down.py
+
+
+
