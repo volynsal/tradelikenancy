@@ -1,3 +1,5 @@
+import re
+
 def parsing(doc):
     owner = []
     company_name = []
@@ -109,7 +111,7 @@ def parsing(doc):
             if (len(split_temp_owner) == 1 and (temp_owner == 'JT' or temp_owner == 'SP' or temp_owner == 'SM' or temp_owner == 'DC')):
                 id.append('N/A')
                 owner.append(temp_owner)
-                company_name.append(temp_name.upper().strip())
+                company_name.append(re.sub(r'[^a-zA-Z0-9_\-\s]', '', temp_name.upper().strip()))
             # Just ID
             elif (len(split_temp_owner) == 1 and len(temp_owner) == 10 and temp_owner.isdigit()):
                 id.append(temp_owner)
@@ -120,12 +122,12 @@ def parsing(doc):
                   (split_temp_owner[1] == 'JT' or split_temp_owner[1] == 'SP' or split_temp_owner[1] == 'SM' or split_temp_owner[1] == 'DC')):
                 id.append(split_temp_owner[0])
                 owner.append(split_temp_owner[1])
-                company_name.append(temp_name.upper().strip())
+                company_name.append(re.sub(r'[^a-zA-Z0-9_\-\s]', '', temp_name.upper().strip()))
             #Company name without anything
             else:
                 id.append('N/A')
                 owner.append('N/A')
-                company_name.append((temp_owner.upper() + " " + temp_name.upper()).strip())
+                company_name.append(re.sub(r'[^a-zA-Z0-9_\-\s]', '', (temp_owner.upper() + " " + temp_name.upper()).strip()))
 
             prev_index = index
 
