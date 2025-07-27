@@ -134,17 +134,6 @@ def parsing(doc):
     if not (len(amount) == len(transaction_type) == len(date) == len(notification_date) == len(owner) == len(company_name)):
         print("Warning: The lists are not equal in length!")
 
-    # with open('output.txt', 'w') as f:
-    #     for i in range(len(company_name)):
-    #         print("--------------", file=f)
-    #         print(id[i], file=f)
-    #         print(company_name[i], file=f)
-    #         print(owner[i], file=f)
-    #         print(date[i], file=f)
-    #         print(notification_date[i], file=f)
-    #         print(transaction_type[i], file=f)
-    #         print(amount[i], file=f)
-
     return (owner, company_name, transaction_type, date, notification_date, amount)
 
 
