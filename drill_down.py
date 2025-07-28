@@ -12,7 +12,8 @@ from parsing import parsing
 
 ## Drill down
 year = input("Enter year (Must be as recent as 2008): ")
-last_name = input("Enter Representative last name: ")
+last_name = input("Enter Representative last name (i.e., Allen or Greene): ")
+first_name = input("Enter Representative first name, after a space try including the middle name or middle name (i.e., Richard W. or Marjorie Taylor): ")
 
 zip_file_url = 'https://disclosures-clerk.house.gov/public_disc/financial-pdfs/' + year + 'FD.ZIP'
 pdf_file_url = 'https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/' + year + '/'
@@ -46,7 +47,7 @@ def is_ptr_doc(doc_id, year):
 
 with open(year + 'FD.txt') as f:
     for line in csv.reader(f, delimiter='\t'):
-        if line[1] == last_name:
+        if line[1] == last_name and line[2] == first_name:
             doc_id = line[8]
 
             if is_ptr_doc(doc_id, year):
@@ -76,7 +77,7 @@ elif len(dates) == 1:
     print("We only found one date for this Representative: " + dates[0] + ". Generating the financial transactions for you now.")
     doc_id_url = pdf_file_url + doc_ids[0] + '.pdf'
 elif len(dates) == 0:
-    print("No Representative with that last name found or no Periodic Transaction Reports for that year. Please run the script and try again.")
+    print("No Periodic Transaction Reports for that year. Please run the script and try again.")
     sys.exit()
 
 r = requests.get(doc_id_url)
