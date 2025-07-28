@@ -11,7 +11,7 @@ import requests
 from parsing import parsing
 
 ## Drill down
-year = input("Enter year: ")
+year = input("Enter year (Must be as recent as 2008): ")
 last_name = input("Enter Representative last name: ")
 
 zip_file_url = 'https://disclosures-clerk.house.gov/public_disc/financial-pdfs/' + year + 'FD.ZIP'
